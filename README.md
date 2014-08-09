@@ -1,4 +1,4 @@
 livelint
 ========
 
-Real Time Static Analysis for Front-End Code
+Real Time Static Analysis for Front-End Code.
