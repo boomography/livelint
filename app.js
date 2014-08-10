@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var recess = require('recess');
+var unorm = require('unorm');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -63,7 +64,12 @@ recess('./test.css', { compile: false}, function (err, obj) {
   for (var i=0; i<obj.length; i++) {
     for (var z=0; i<obj[i].definitions.length; z++) {
       if (obj[i].definitions[z] !== undefined) {
-        console.log(obj[i].definitions[z].errors);
+        obj[i].definitions[z].errors.forEach(function(error){
+          // console.log(unorm.nfd(error.type));
+          console.log(unorm.nfd(error.message));
+          if(error.extract !== undefined) console.log(unorm.nfd(error.extract));
+          console.log('');
+        });
       }
     }
   }
