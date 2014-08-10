@@ -57,5 +57,16 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// test recess functionality
+recess('./test.css', { compile: false}, function (err, obj) {
+  if (err) throw err;
+  for (var i=0; i<obj.length; i++) {
+    for (var z=0; i<obj[i].definitions.length; z++) {
+      if (obj[i].definitions[z] !== undefined) {
+        console.log(obj[i].definitions[z].errors);
+      }
+    }
+  }
+});
 
 module.exports = app;
