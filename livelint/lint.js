@@ -3,6 +3,7 @@ var unorm   = require('unorm');
 var path    = require('path');
 var fs      = require('fs');
 var _       = require('underscore');
+var RSVP    = require('rsvp');
 
 function LINT (path, options) {
   this.path = path;
