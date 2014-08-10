@@ -1,8 +1,8 @@
-var recess = require('recess');
-var unorm = require('unorm');
-var path = require('path');
-var fs = require('fs');
-var _ = require('underscore');
+var recess  = require('recess');
+var unorm   = require('unorm');
+var path    = require('path');
+var fs      = require('fs');
+var _       = require('underscore');
 
 function LINT (path, options) {
   this.path = path;
@@ -21,15 +21,26 @@ LINT.prototype = {
         for (var z=0; i<obj[i].definitions.length; z++) {
           if (obj[i].definitions[z] !== undefined) {
             obj[i].definitions[z].errors.forEach(function(error){
-              console.log(unorm.nfd(error.message));
-              if(error.extract !== undefined) console.log(unorm.nfd(error.extract));
-              console.log('');
+              var errObj;
+              if(error.extract !== undefined) {
+                errObj = {
+                  message: unorm.nfd(error.message),
+                  error: unorm.nfd(error.extract)
+                };
+              } else {
+                errObj = {
+                  message: unorm.nfd(error.message)
+                };
+              }
+              that.errors.push(errObj);
             });
           }
         }
       }
     });
-
+  },
+  getErrors: function() {
+    return this.errors;
   }
 };
 

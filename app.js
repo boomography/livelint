@@ -5,9 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var recess = require('recess');
-var unorm = require('unorm');
-
 var LINT = require('./livelint/lint');
 
 var routes = require('./routes/index');
