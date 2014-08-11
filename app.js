@@ -59,5 +59,6 @@ app.use(function(err, req, res, next) {
 
 // test recess functionality
 var lint = new LINT('./test.css', {compile:false});
+console.log(lint);
 
 module.exports = app;
